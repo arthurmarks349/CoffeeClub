@@ -47,10 +47,11 @@ body{
    position:relative;
 }
 
-.btnWhtBor{
+.btnWhtBor, .btnWhtBor:hover, .btnWhtBor:active, .btnWhtBor:visited, .btnWhtBor:focus{
    border-style: solid;
    border-width: 2px;
    border-color: #ffffff;
+   outline:0;
 }
 
 #loginToggle{

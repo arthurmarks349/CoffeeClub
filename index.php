@@ -22,9 +22,18 @@
          <span id="headerTitle">offee </span>
          <span class="lrgLetter">C</span>
          <span id="headerTitle">lub</span
-      </div>
+      </div>   
       <div id="loginToggle">
          <button type="button" id="headLogBut" class="btn btn-primary btnWhtBor" data-toggle="modal" data-target="#myModal">Login</button>
+      </div>
+      <div id="main_nav">
+         <ul id="mainNav">
+            <li class="li_Nav">Members</li>
+            <li class="li_Nav">Coffee</li>
+            <li class="li_Nav">Dues</li>
+            <li class="li_Nav">Supplies</li>
+            <li class="li_Nav">Contact</li>
+         </ul>
       </div>
   </div>
   <div id="container">

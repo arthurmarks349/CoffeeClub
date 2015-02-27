@@ -58,5 +58,19 @@ body{
    position:relative;
    float:right;
    right:30px;
-   top:8px;
+   top:10px;
+}
+
+.li_Nav{
+	display: inline-block;
+	color:white;
+	width:130px;
+	text-align: center;
+}
+
+#mainNav{
+	vertical-align: middle;
+	position:absolute;
+	top:19px;
+	left:150px;
 }

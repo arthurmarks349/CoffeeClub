@@ -16,6 +16,7 @@
 
 <body>
 <?php
+// SEE THIS LINK: https://github.com/paypal/rest-api-sample-app-php
 $this_page = "http://212.1.213.58/paypal_test/paypal_test.php";
 $success = "http://212.1.213.58/paypal_test/success.php";
 $cancelled = "http://212.1.213.58/paypal_test/cancel.php";
@@ -29,9 +30,8 @@ if(isset($_POST["btnCalculate"]))
 {
 	$payment = intval(trim($_POST["txtPayment"]));
 	$seller = $_POST["txtSellerID"];
-	$fees = ($payment + 0.30) / 0.971;
-	$amount = $payment + $fees;
-	
+	$fees = round(0.029 * $payment + 0.30, 2);
+	$amount = round(($payment + 0.30) / 0.971, 2);
 }
 
 	echo "This is the test payment portal for the EDMC Coffee Club.  No transactions on this page are actually made in a live environment.  In order to test payments on this page, you will need a sandbox account through PayPal.  If you do not know your credentials, please see Dan Hartenbach.
@@ -74,8 +74,21 @@ if(isset($_POST["btnCalculate"]))
 <p> Thank you for using the EDMC CoffeeClub service. Monthly membership dues are currently $".$payment.". Payment can be made in cash to any Club officer, or if you prefer you can also pay your dues online. </p>
 <p>Note: because there is a fee associated with using the PayPal service, the dues are slightly higher when paying online.  <br />
 Current dues (online): $".$amount." </p>
-<form id='form2' name='form2' method='post' action=''>
-  <input type='submit' name='btnPay' id='btnPay' value='Pay CoffeeClub Dues Online' />
+<form id='form2' name='form2' method='post' action='".$paypal_page."'>
+  <input type='hidden' name='business' value='$seller'>
+    <input type='hidden' name='cmd' value='_xclick'>
+    <input type='hidden' name='item_name' value='EDMC Coffee Club'>
+    <input type='hidden' name='item_number' value='1'>
+    <input type='hidden' name='credits' value='510'>
+    <input type='hidden' name='userid' value='1'>
+    <input type='hidden' name='amount' value='$amount'>
+    <input type='hidden' name='no_shipping' value='1'>
+    <input type='hidden' name='currency_code' value='USD'>
+    <input type='hidden' name='handling' value='0'>
+    <input type='hidden' name='cancel_return' value='$cancelled'>
+    <input type='hidden' name='return' value='$success'>
+    <input type='image' src='https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif' border='0' name='submit' alt='PayPal - The safer, easier way to pay online!'>
+    <img alt='' border='0' src='https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif' width='1' height='1'>
 </form>";
 ?>
 </body>

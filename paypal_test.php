@@ -28,7 +28,7 @@ $amount = 0;
 
 if(isset($_POST["btnCalculate"]))
 {
-	$payment = intval(trim($_POST["txtPayment"]));
+	$payment = round(floatval(trim($_POST["txtPayment"])), 2);
 	$seller = $_POST["txtSellerID"];
 	$fees = round(0.029 * $payment + 0.30, 2);
 	$amount = round(($payment + 0.30) / 0.971, 2);
